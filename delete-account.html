@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete your account — Brilliant Chess</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #171a21;
+      --text: #e7e9ee;
+      --muted: #a2a8b4;
+      --accent: #3fb27f;
+      --danger: #e5584d;
+      --border: #262b34;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 40px 20px 80px; }
+    h1 { font-size: 1.7rem; margin: 0 0 10px; }
+    h2 { font-size: 1.1rem; margin: 28px 0 8px; }
+    p, li { color: var(--text); }
+    .muted { color: var(--muted); font-size: 0.92rem; }
+    a { color: var(--accent); }
+    ul { padding-left: 22px; }
+    li { margin: 5px 0; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; margin: 22px 0; }
+    label { display: block; font-weight: 600; margin: 14px 0 6px; }
+    input, textarea {
+      width: 100%;
+      background: #0b0d11;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 11px 12px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    textarea { resize: vertical; min-height: 84px; }
+    button {
+      margin-top: 18px;
+      width: 100%;
+      background: var(--danger);
+      color: #fff;
+      border: 0;
+      border-radius: 8px;
+      padding: 13px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:disabled { opacity: 0.6; cursor: default; }
+    .status { margin-top: 16px; padding: 12px 14px; border-radius: 8px; display: none; }
+    .status.ok { display: block; background: rgba(63,178,127,0.12); border: 1px solid var(--accent); }
+    .status.err { display: block; background: rgba(229,88,77,0.12); border: 1px solid var(--danger); }
+    .hint { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Delete your Brilliant Chess account</h1>
+    <p class="muted">
+      Have the app installed? The fastest way is <strong>Settings &rarr; Delete account</strong> in the app.
+      Use this form if you no longer have access to the app.
+    </p>
+
+    <h2>What gets deleted</h2>
+    <p>When your account is deleted, we permanently erase your personal data:</p>
+    <ul>
+      <li>Your email address, display name and username.</li>
+      <li>Your Google / Firebase and Telegram sign-in identifiers.</li>
+      <li>Your friends, friend requests, challenges and activity feed.</li>
+      <li>Your in-game chat messages and any reports you filed.</li>
+    </ul>
+    <p class="muted">
+      Past games are kept for your opponents&rsquo; history with your name anonymised to
+      &ldquo;Deleted user&rdquo; &mdash; they no longer identify you. This action cannot be undone.
+    </p>
+
+    <h2>Timeline</h2>
+    <p class="muted">Requests are processed within 30 days. We may email you to confirm ownership of the address
+      before deleting.</p>
+
+    <div class="card">
+      <form id="deleteForm" novalidate>
+        <label for="email">Email address on your account</label>
+        <input type="email" id="email" name="email" autocomplete="email" required
+               placeholder="you@example.com" />
+        <div class="hint">Enter the email you used to sign in (or the email linked to your Google account).</div>
+
+        <label for="note">Note (optional)</label>
+        <textarea id="note" name="note" maxlength="1000"
+                  placeholder="Anything that helps us find your account (e.g. your in-game name)."></textarea>
+
+        <button type="submit" id="submitBtn">Request account deletion</button>
+      </form>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </div>
+
+    <p class="muted">
+      See our <a href="privacy">Privacy Policy</a> or contact
+      <a href="mailto:m1nexsupport@gmail.com">m1nexsupport@gmail.com</a>.
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      var API = 'https://scota.tail6330cf.ts.net/chess/api/';
+      var form = document.getElementById('deleteForm');
+      var btn = document.getElementById('submitBtn');
+      var statusEl = document.getElementById('status');
+
+      function showStatus(kind, msg) {
+        statusEl.className = 'status ' + kind;
+        statusEl.textContent = msg;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = document.getElementById('email').value.trim();
+        var note = document.getElementById('note').value.trim();
+        if (!email) {
+          showStatus('err', 'Please enter your email address.');
+          return;
+        }
+        btn.disabled = true;
+        showStatus('ok', 'Submitting…');
+        // This page is on GitHub Pages; the API lives on the game server (CORS allows any origin).
+        fetch(API + 'account/deletion-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, note: note || null })
+        }).then(function (res) {
+          if (res.ok) {
+            form.style.display = 'none';
+            showStatus('ok', 'Thanks. If an account exists for that email, it will be deleted. ' +
+              'We may email you to confirm.');
+          } else if (res.status === 429) {
+            showStatus('err', 'Too many requests. Please try again in a minute.');
+            btn.disabled = false;
+          } else {
+            showStatus('err', 'Please enter a valid email address and try again.');
+            btn.disabled = false;
+          }
+        }).catch(function () {
+          showStatus('err', 'Our server is not reachable right now. Try again later, or email ' +
+            'm1nexsupport@gmail.com from your account email with the subject "Delete my account".');
+          btn.disabled = false;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

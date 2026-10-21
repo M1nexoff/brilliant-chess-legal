@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>Privacy Policy — Brilliant Chess</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #171a21;
+      --text: #e7e9ee;
+      --muted: #a2a8b4;
+      --accent: #3fb27f;
+      --border: #262b34;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+    }
+    .wrap { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+    header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 28px; }
+    h1 { font-size: 1.9rem; margin: 0 0 6px; }
+    h2 { font-size: 1.25rem; margin: 34px 0 10px; color: #fff; }
+    h3 { font-size: 1.02rem; margin: 20px 0 6px; color: #fff; }
+    p, li { color: var(--text); }
+    .muted { color: var(--muted); font-size: 0.92rem; }
+    a { color: var(--accent); }
+    ul { padding-left: 22px; }
+    li { margin: 6px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.95rem; }
+    th, td { text-align: left; padding: 10px 12px; border: 1px solid var(--border); vertical-align: top; }
+    th { background: var(--card); }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin: 18px 0; }
+    code { background: #0b0d11; padding: 1px 6px; border-radius: 5px; }
+    .table-scroll { overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Privacy Policy</h1>
+      <p class="muted">Brilliant Chess &middot; Last updated: 4 July 2026</p>
+    </header>
+
+    <p>
+      This Privacy Policy explains what personal data the Brilliant Chess mobile app and its backend
+      (&ldquo;Brilliant Chess&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) collect, why we collect it, who we
+      share it with, how long we keep it, and the choices you have &mdash; including how to delete your account
+      and data.
+    </p>
+
+    <h2>1. Data we collect</h2>
+
+    <h3>Account &amp; sign-in</h3>
+    <p>You can sign in with any one of three methods. We only collect what that method provides:</p>
+    <ul>
+      <li><strong>Google Sign-In</strong> — your Google account identifier and the email/display name Google
+        returns, used to create and recognise your account.</li>
+      <li><strong>Email one-time code (OTP)</strong> — your email address, used to send the sign-in code and to
+        identify your account.</li>
+      <li><strong>Telegram Mini App</strong> — your Telegram user id, used to auto-sign-in inside Telegram.</li>
+    </ul>
+    <p>
+      Every account has a <strong>display name</strong> (shown to other players) and an in-app username. We do
+      <em>not</em> ask for or store a password for normal players.
+    </p>
+
+    <h3>Gameplay</h3>
+    <ul>
+      <li>Your ratings (bullet, blitz, rapid) and win/loss/draw statistics.</li>
+      <li>Your game history — opponents, results, time controls, timestamps, and the moves played.</li>
+      <li>In-game chat messages you send, and reports you file about other players.</li>
+      <li>Your friends list and friend requests.</li>
+    </ul>
+
+    <h3>Technical &amp; security</h3>
+    <ul>
+      <li><strong>IP address</strong> — processed server-side to rate-limit abusive traffic and protect the
+        service. It is not part of your public profile.</li>
+      <li><strong>Push-notification token</strong> — if you enable notifications, we store a Firebase Cloud
+        Messaging (FCM) device token so we can send you game and friend notifications. It is removed when you
+        sign out on that device or delete your account.</li>
+    </ul>
+
+    <h3>Diagnostics &amp; analytics (via Firebase)</h3>
+    <ul>
+      <li><strong>Crash &amp; ANR diagnostics</strong> (Firebase Crashlytics) — crash stack traces, app-not-
+        responding events and device/OS metadata, so we can fix stability problems.</li>
+      <li><strong>Analytics</strong> (Firebase Analytics), including your device&rsquo;s <strong>Advertising
+        ID</strong> — aggregate usage events that help us understand which features are used and improve the
+        app.</li>
+    </ul>
+
+    <h2>2. Why we use your data (purposes)</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Purpose</th><th>Data used</th></tr></thead>
+        <tbody>
+          <tr><td>Create and secure your account, sign you in</td><td>Google id / email / Telegram id, display name, username</td></tr>
+          <tr><td>Match you, run games, maintain ratings &amp; history</td><td>Gameplay data, display name</td></tr>
+          <tr><td>Social features (friends, chat, reports)</td><td>Friends, chat messages, reports</td></tr>
+          <tr><td>Prevent abuse &amp; keep the service reliable</td><td>IP address</td></tr>
+          <tr><td>Diagnose crashes and improve the app</td><td>Crash/ANR diagnostics, analytics, Advertising ID</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>3. Who we share data with (third parties)</h2>
+    <p>We do not sell your personal data. We share data with the service providers we rely on:</p>
+    <ul>
+      <li><strong>Google / Firebase</strong> — Google Sign-In (authentication), Firebase Crashlytics (crash
+        &amp; ANR reporting) and Firebase Analytics (usage analytics, Advertising ID). Their handling of this
+        data is governed by Google&rsquo;s Privacy Policy.</li>
+      <li><strong>Telegram</strong> — only if you choose to sign in through the Telegram Mini App.</li>
+    </ul>
+    <p class="muted">We may also disclose data where required by law.</p>
+
+    <h2>4. How long we keep it (retention)</h2>
+    <ul>
+      <li><strong>Account &amp; gameplay data</strong> — kept while your account exists. When you delete your
+        account, your identifying data is erased (see below).</li>
+      <li><strong>Game records</strong> — after deletion, past games are retained for your opponents&rsquo;
+        history with your player reference anonymised to &ldquo;Deleted user&rdquo;. They no longer identify
+        you.</li>
+      <li><strong>Sign-in codes &amp; IP-based rate-limit state</strong> — held only transiently (minutes) and
+        then discarded.</li>
+      <li><strong>Crash &amp; analytics data</strong> — retained by Firebase according to Google&rsquo;s
+        retention settings.</li>
+    </ul>
+
+    <h2>5. Your right to delete your account and data</h2>
+    <div class="card">
+      <p>You can delete your account and personal data at any time:</p>
+      <ul>
+        <li><strong>In the app:</strong> Settings &rarr; Delete account.</li>
+        <li><strong>On the web:</strong> use our <a href="delete-account">account deletion form</a> if you no
+          longer have the app installed.</li>
+      </ul>
+      <p class="muted">When you delete your account, we permanently remove it from our systems. Specifically, we:</p>
+      <ul class="muted">
+        <li>erase your email, display name and username;</li>
+        <li>delete your linked sign-in identity — including the Google / Firebase
+          <strong>Authentication</strong> account and the Telegram identifier connected to you — so that
+          sign-in is removed from Firebase Authentication and no longer appears there;</li>
+        <li>remove your registered push-notification (FCM) device tokens, so your devices stop receiving
+          notifications from us;</li>
+        <li>delete your friends, friend requests, challenges, activity feed, reports and in-game chat
+          messages;</li>
+        <li>sign you out on all devices.</li>
+      </ul>
+      <p class="muted" style="margin-bottom:0">
+        Past games are kept for your opponents&rsquo; history with your player reference anonymised to
+        &ldquo;Deleted user&rdquo;; they no longer identify you. Crash and analytics data already sent to
+        Firebase is retained by Google under its own retention settings.
+      </p>
+    </div>
+
+    <h2>6. Children</h2>
+    <p>Brilliant Chess is not directed to children under the age required by your country&rsquo;s law. We do not
+      knowingly collect data from them.</p>
+
+    <h2>7. Changes to this policy</h2>
+    <p>We may update this policy. Material changes will be reflected by the &ldquo;Last updated&rdquo; date at
+      the top of this page.</p>
+
+    <h2>8. Contact</h2>
+    <p>
+      Questions or data requests: <a href="mailto:m1nexsupport@gmail.com">m1nexsupport@gmail.com</a>.
+    </p>
+  </div>
+</body>
+</html>
