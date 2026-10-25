@@ -44,7 +44,7 @@
   <div class="wrap">
     <header>
       <h1>Privacy Policy</h1>
-      <p class="muted">Brilliant Chess &middot; Last updated: 4 July 2026</p>
+      <p class="muted">Brilliant Chess &middot; Last updated: 25 October 2026</p>
     </header>
 
     <p>
@@ -76,6 +76,11 @@
       <li>Your game history — opponents, results, time controls, timestamps, and the moves played.</li>
       <li>In-game chat messages you send, and reports you file about other players.</li>
       <li>Your friends list and friend requests.</li>
+      <li><strong>Watching live games</strong> — while a game is in progress, your friends and, for the
+        top-rated games, other players can watch it. They see both players&rsquo; display names, ratings and
+        the moves.</li>
+      <li><strong>Founder badge</strong> — to award it to early players, we check the date your sign-in
+        account was created in Firebase Authentication.</li>
     </ul>
 
     <h3>Technical &amp; security</h3>
@@ -85,6 +90,9 @@
       <li><strong>Push-notification token</strong> — if you enable notifications, we store a Firebase Cloud
         Messaging (FCM) device token so we can send you game and friend notifications. It is removed when you
         sign out on that device or delete your account.</li>
+      <li><strong>Game review</strong> — the Stockfish engine analyses your games entirely on your device;
+        your games are not sent anywhere for review. The first time you use it (and if you turn on Deep
+        analysis) the app downloads the engine&rsquo;s data files from our server.</li>
     </ul>
 
     <h3>Diagnostics &amp; analytics (via Firebase)</h3>
@@ -103,7 +111,8 @@
         <tbody>
           <tr><td>Create and secure your account, sign you in</td><td>Google id / email / Telegram id, display name, username</td></tr>
           <tr><td>Match you, run games, maintain ratings &amp; history</td><td>Gameplay data, display name</td></tr>
-          <tr><td>Social features (friends, chat, reports)</td><td>Friends, chat messages, reports</td></tr>
+          <tr><td>Social features (friends, chat, reports, watching live games)</td><td>Friends, chat messages, reports, live game data</td></tr>
+          <tr><td>Award the Founder badge</td><td>Sign-in account creation date</td></tr>
           <tr><td>Prevent abuse &amp; keep the service reliable</td><td>IP address</td></tr>
           <tr><td>Diagnose crashes and improve the app</td><td>Crash/ANR diagnostics, analytics, Advertising ID</td></tr>
         </tbody>
@@ -115,8 +124,15 @@
     <ul>
       <li><strong>Google / Firebase</strong> — Google Sign-In (authentication), Firebase Crashlytics (crash
         &amp; ANR reporting) and Firebase Analytics (usage analytics, Advertising ID). Their handling of this
-        data is governed by Google&rsquo;s Privacy Policy.</li>
-      <li><strong>Telegram</strong> — only if you choose to sign in through the Telegram Mini App.</li>
+        data is governed by Google&rsquo;s Privacy Policy. Firebase Cloud Messaging delivers push
+        notifications and Firebase Remote Config tells the app which server to use.</li>
+      <li><strong>Brevo</strong> — sends the one-time sign-in code to your email address if you sign in with
+        email.</li>
+      <li><strong>Cloudflare</strong> — the connection between the app and our server runs through
+        Cloudflare, which processes your IP address and request data to deliver and protect it.</li>
+      <li><strong>Telegram</strong> — if you choose to sign in through the Telegram Mini App. We also receive
+        internal service alerts on Telegram, which include the display name and username of newly
+        registered players.</li>
     </ul>
     <p class="muted">We may also disclose data where required by law.</p>
 
